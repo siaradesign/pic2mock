@@ -1,5 +1,6 @@
-import ProtoChat from "@/components/ProtoChat";
+import { redirect } from "next/navigation";
 
-export default function Page() {
-  return <ProtoChat />;
+export default function Home() {
+  redirect("/dashboard");
+  return null;
 }
