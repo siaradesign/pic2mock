@@ -12,7 +12,7 @@ formatted cleanly for image generators. Keep it concise, commercial, and on-bran
 export async function POST(req: NextRequest) {
   const { userMessage } = await req.json();
 
-  const r = await fetch("https://api.openai.com/v1/responses", {
+  const r = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
       "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
     body: JSON.stringify({
       model: "gpt-4o-mini",
       stream: true,
-      input: [
+      messages: [
         { role: "system", content: PROTO_SYSTEM },
         { role: "user", content: userMessage ?? "" }
       ],
